@@ -8,7 +8,11 @@ It also reports the chance of hitting at least once across multiple attacks.
 - Critical hit range support
 - Chance to hit at least once across several attacks
 - Simple Flask web interface
-- Session notes that persist to disk
+- Ability score roller (4d6 drop lowest)
+- Random Tarokka card draw for Curse of Strahd
+- Barovian encounter generator
+- Random NPC name generator
+- Session-based notes that persist to disk
 - Prime factorization puzzle tool
 
 ## Getting Started

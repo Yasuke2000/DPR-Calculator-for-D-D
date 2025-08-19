@@ -7,14 +7,18 @@
 <body>
 <h1>Session Notes</h1>
 <form method="post">
+    <input type="text" name="session" placeholder="Session name"><br>
     <textarea name="content" rows="4" cols="50" placeholder="Write a note..."></textarea><br>
     <button type="submit">Add Note</button>
 </form>
+{% for session, notes in grouped_notes.items() %}
+<h2>{{ session }}</h2>
 <ul>
-{% for note in notes %}
+    {% for note in notes %}
     <li><strong>{{ note.time }}:</strong> {{ note.content }}</li>
-{% endfor %}
+    {% endfor %}
 </ul>
-<a href="/">Back to calculator</a>
+{% endfor %}
+<a href="{{ url_for('index') }}">Back</a>
 </body>
 </html>

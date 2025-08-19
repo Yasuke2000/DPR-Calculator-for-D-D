@@ -1,9 +1,16 @@
 from flask import Flask, render_template, request, redirect, url_for
 from dpr import Attack, compute_dpr, chance_to_hit_at_least_once
 from puzzles import prime_factors
+from tools import (
+    generate_ability_scores,
+    random_barovia_encounter,
+    random_name,
+    random_tarokka_card,
+)
 import json
 import os
 from datetime import datetime
+from collections import defaultdict
 
 app = Flask(__name__)
 
@@ -54,16 +61,47 @@ def index():
     return render_template('index.html', result=result, chance=chance)
 
 
+@app.route('/ability-scores')
+def ability_scores():
+    scores = generate_ability_scores()
+    return render_template('ability_scores.html', scores=scores)
+
+
+@app.route('/tarokka')
+def tarokka():
+    card = random_tarokka_card()
+    return render_template('tarokka.html', card=card)
+
+
+@app.route('/encounter')
+def encounter():
+    encounter = random_barovia_encounter()
+    return render_template('encounter.html', encounter=encounter)
+
+
+@app.route('/npc-name')
+def npc_name():
+    name = random_name()
+    return render_template('npc_name.html', name=name)
+
 @app.route('/notes', methods=['GET', 'POST'])
 def notes():
     notes = load_notes()
     if request.method == 'POST':
+        session_name = request.form.get('session', '').strip()
         content = request.form.get('content', '').strip()
         if content:
-            notes.append({'time': datetime.utcnow().isoformat(), 'content': content})
+            notes.append({
+                'time': datetime.utcnow().isoformat(),
+                'session': session_name or 'General',
+                'content': content,
+            })
             save_notes(notes)
         return redirect(url_for('notes'))
-    return render_template('notes.html', notes=notes)
+    grouped = defaultdict(list)
+    for note in notes:
+        grouped[note.get('session', 'General')].append(note)
+    return render_template('notes.html', grouped_notes=grouped)
 
 
 @app.route('/puzzles', methods=['GET', 'POST'])
@@ -77,7 +115,5 @@ def puzzles():
         except ValueError:
             factors = []
     return render_template('puzzles.html', factors=factors)
-
-
 if __name__ == '__main__':
     app.run(debug=True)

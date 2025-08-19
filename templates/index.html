@@ -6,6 +6,14 @@
 </head>
 <body>
 <h1>D&D DPR Calculator</h1>
+<nav>
+    <a href="{{ url_for('notes') }}">Session Notes</a> |
+    <a href="{{ url_for('puzzles') }}">Puzzle Tools</a> |
+    <a href="{{ url_for('ability_scores') }}">Ability Scores</a> |
+    <a href="{{ url_for('tarokka') }}">Tarokka Card</a> |
+    <a href="{{ url_for('encounter') }}">Encounter</a> |
+    <a href="{{ url_for('npc_name') }}">NPC Name</a>
+</nav>
 <form method="post">
     <label>Attack bonus: <input type="number" name="attack_bonus" required></label><br>
     <label>Target AC: <input type="number" name="target_ac" required></label><br>
