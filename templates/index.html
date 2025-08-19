@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>DPR Calculator</title>
+</head>
+<body>
+<h1>D&D DPR Calculator</h1>
+<form method="post">
+    <label>Attack bonus: <input type="number" name="attack_bonus" required></label><br>
+    <label>Target AC: <input type="number" name="target_ac" required></label><br>
+    <label>Damage die (e.g. 6 for d6): <input type="number" name="damage_die" value="6" required></label><br>
+    <label>Damage bonus: <input type="number" name="damage_bonus" value="0"></label><br>
+    <label>Number of attacks: <input type="number" name="num_attacks" value="1"></label><br>
+    <label>Crit range: <input type="number" name="crit_range" value="20"></label><br>
+    <label><input type="checkbox" name="advantage"> Advantage</label>
+    <label><input type="checkbox" name="disadvantage"> Disadvantage</label><br>
+    <button type="submit">Calculate</button>
+</form>
+{% if result is not none %}
+<p><strong>DPR:</strong> {{ '%.2f'|format(result) }}</p>
+<p><strong>Chance to hit at least once:</strong> {{ '%.1f'|format(chance*100) }}%</p>
+{% endif %}
+</body>
+</html>
