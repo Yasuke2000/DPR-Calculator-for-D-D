@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Session Notes</title>
+</head>
+<body>
+<h1>Session Notes</h1>
+<form method="post">
+    <textarea name="content" rows="4" cols="50" placeholder="Write a note..."></textarea><br>
+    <button type="submit">Add Note</button>
+</form>
+<ul>
+{% for note in notes %}
+    <li><strong>{{ note.time }}:</strong> {{ note.content }}</li>
+{% endfor %}
+</ul>
+<a href="/">Back to calculator</a>
+</body>
+</html>

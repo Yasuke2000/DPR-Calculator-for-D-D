@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Puzzle Tools</title>
+</head>
+<body>
+<h1>Prime Factorization</h1>
+<form method="post">
+    <label>Number: <input type="number" name="number" min="2"></label>
+    <button type="submit">Factor</button>
+</form>
+{% if factors is not none %}
+<p>Factors: {{ factors|join(', ') if factors else 'Invalid input' }}</p>
+{% endif %}
+<a href="/">Back to calculator</a>
+</body>
+</html>

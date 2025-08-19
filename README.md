@@ -1,6 +1,6 @@
 # D&D DPR Calculator
 
-A small web application for computing expected damage per round (DPR) for Dungeons & Dragons 5e attacks.  
+A small web application for computing expected damage per round (DPR) for Dungeons & Dragons 5e attacks.
 It also reports the chance of hitting at least once across multiple attacks.
 
 ## Features
@@ -8,6 +8,8 @@ It also reports the chance of hitting at least once across multiple attacks.
 - Critical hit range support
 - Chance to hit at least once across several attacks
 - Simple Flask web interface
+- Session notes that persist to disk
+- Prime factorization puzzle tool
 
 ## Getting Started
 Install dependencies and run the development server:
