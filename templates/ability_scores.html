@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Ability Scores</title>
+</head>
+<body>
+<h1>Random Ability Scores</h1>
+<p>{{ scores | join(', ') }}</p>
+<a href="{{ url_for('ability_scores') }}">Roll again</a> |
+<a href="{{ url_for('index') }}">Back</a>
+</body>
+</html>

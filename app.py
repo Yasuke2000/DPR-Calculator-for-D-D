@@ -1,5 +1,11 @@
 from flask import Flask, render_template, request
 from dpr import Attack, compute_dpr, chance_to_hit_at_least_once
+from tools import (
+    generate_ability_scores,
+    random_barovia_encounter,
+    random_name,
+    random_tarokka_card,
+)
 
 app = Flask(__name__)
 
@@ -31,6 +37,30 @@ def index():
         result = compute_dpr(attack)
         chance = chance_to_hit_at_least_once(attack)
     return render_template('index.html', result=result, chance=chance)
+
+
+@app.route('/ability-scores')
+def ability_scores():
+    scores = generate_ability_scores()
+    return render_template('ability_scores.html', scores=scores)
+
+
+@app.route('/tarokka')
+def tarokka():
+    card = random_tarokka_card()
+    return render_template('tarokka.html', card=card)
+
+
+@app.route('/encounter')
+def encounter():
+    encounter = random_barovia_encounter()
+    return render_template('encounter.html', encounter=encounter)
+
+
+@app.route('/npc-name')
+def npc_name():
+    name = random_name()
+    return render_template('npc_name.html', name=name)
 
 
 if __name__ == '__main__':

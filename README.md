@@ -8,6 +8,10 @@ It also reports the chance of hitting at least once across multiple attacks.
 - Critical hit range support
 - Chance to hit at least once across several attacks
 - Simple Flask web interface
+- Ability score roller (4d6 drop lowest)
+- Random Tarokka card draw for Curse of Strahd
+- Barovian encounter generator
+- Random NPC name generator
 
 ## Getting Started
 Install dependencies and run the development server:
